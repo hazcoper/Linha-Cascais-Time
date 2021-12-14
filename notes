@@ -1,0 +1,18 @@
+presente amigo secreto
+
+um display com um esp para mostrar quantos minutos faltam para chegar o proximo comboio
+	coisas pequena
+	entra em deep sleep
+	ligado a corrente
+	botao para acordar
+
+mas fazer isto tudo no esp vai ser muito complicado
+portanto vou fazer um server a correr no tecnico que cada vez que recebe um pedido devolve quando o comboio mais proximo
+
+
+para fazer isto vou precisar dos horarios
+lista dos feriados
+funcao que diz se e feriado ou nao
+funcao que diz qeu e fim de semana ou nao
+
+agora preciso de uma lista com os horarios da cp
