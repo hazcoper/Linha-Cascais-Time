@@ -83,15 +83,11 @@ f.close()
 
 
 
-
-print(DealTime("22:50", False))
-print(GetClosest())
-
-# @app.route('/carcavelos-lisboa')
-# def helloHandler():
-#     return str(GetClosest())
+@app.route('/carcavelos-lisboa')
+def helloHandler():
+    return str(GetClosest())
 
 
-# app.run(host='0.0.0.0', port= 8090)
+app.run(host='0.0.0.0', port= 8090)
 
 
