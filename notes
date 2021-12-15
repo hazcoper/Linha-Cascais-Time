@@ -16,3 +16,18 @@ funcao que diz se e feriado ou nao
 funcao que diz qeu e fim de semana ou nao
 
 agora preciso de uma lista com os horarios da cp
+
+
+portanto ja tenho o servidor a responder pelo menos para carcavelos
+a maneira como vou fazer para o esp vai ser:
+
+vou experimentar:
+    estar a dormir
+    quando carrega no botao acorda
+        liga ao wifi
+        faz o pedido ao servidor e mostra
+        fica ligado durante 10 minutos
+            a cada minuto fazer um pedido ao servidor
+            atualizar o display
+            fazer ota update
+        vai dormir

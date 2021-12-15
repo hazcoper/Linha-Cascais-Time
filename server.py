@@ -53,7 +53,7 @@ def DealTime(time, isholiday):
             break
     
     if minOp1 == "":
-        hour = (int(hour) + 1) %24
+        hour = str((int(hour) + 1) %24)
         # print(f"This is the closest --> {hour}:{timetable[flag][hour][0]}")
         return (int(minute)-int(timetable[flag][hour][0]))%60
     else:
@@ -82,11 +82,16 @@ timetable = json.load(f)
 f.close()
 
 
-@app.route('/carcavelos-lisboa')
-def helloHandler():
-    return str(GetClosest())
 
 
-app.run(host='0.0.0.0', port= 8090)
+print(DealTime("22:50", False))
+print(GetClosest())
+
+# @app.route('/carcavelos-lisboa')
+# def helloHandler():
+#     return str(GetClosest())
+
+
+# app.run(host='0.0.0.0', port= 8090)
 
 
