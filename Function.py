@@ -9,7 +9,7 @@ def IsWeekend(dtime):
     return True if dtime.weekday() >= 6 else False   #returns the day of the week, 0 is monday
 
 
-def IsHoliday(dtime, holiday):
+def IsHoliday(dtime, holidaylist):
     """
     returns if given date is a holiday or not
     """
@@ -17,7 +17,7 @@ def IsHoliday(dtime, holiday):
     month = dtime.month
     day = dtime.day
 
-    return (month in holiday and holiday[month] == day)
+    return (month in holidaylist and holidaylist[month] == day)
 
 
 
@@ -30,7 +30,6 @@ def DealTime(time, isholiday, timetable):
     
     hour = time.split(":")[0]
     minute = time.split(":")[1]
-    print(f"This is the hour {hour}:{minute}")
 
     if isholiday:
         flag = "f"
@@ -38,7 +37,6 @@ def DealTime(time, isholiday, timetable):
         flag = "n"
 
     option1 = timetable[flag][hour]
-    print(f"This is the {option1}")
     minOp1 = ""
     for temp in option1:
         if int(minute) <= int(temp):
@@ -46,14 +44,14 @@ def DealTime(time, isholiday, timetable):
             break
     
     if minOp1 == "":
-        hour = (int(hour) + 1) %24
+        hour = str((int(hour) + 1) %24)
         # print(f"This is the closest --> {hour}:{timetable[flag][hour][0]}")
         return (int(minute)-int(timetable[flag][hour][0]))%60
     else:
         # print(f"This is the closest --> {hour}:{minOp1}")
         return int(minOp1)-int(minute)
 
-def GetClosest(mydate=None):
+def GetClosest(timetable, holidaylist, mydate=None):
     """
     Returns the closest train using all the variables above
     """
@@ -63,10 +61,11 @@ def GetClosest(mydate=None):
         mydate = datetime.datetime.now()
     
     mytime = f"{mydate.hour}:{mydate.minute}"
+    nextRequest = 60 - mydate.second
 
-    if IsHoliday(mydate) or IsWeekend(mydate):
-        return DealTime(mytime, True)
+    if IsHoliday(mydate, holidaylist) or IsWeekend(mydate):
+        return {"next-train": DealTime(mytime, True, timetable), "next-request": nextRequest}
     
-    return DealTime(mytime, False)
+    return {"next-train": DealTime(mytime, False, timetable), "next-request": nextRequest}
 
 
