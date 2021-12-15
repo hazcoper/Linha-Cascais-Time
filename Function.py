@@ -53,14 +53,20 @@ def DealTime(time, isholiday, timetable):
         # print(f"This is the closest --> {hour}:{minOp1}")
         return int(minOp1)-int(minute)
 
-def GetClosest():
+def GetClosest(mydate=None):
     """
     Returns the closest train using all the variables above
     """
-    mydate = datetime.datetime.now()
+
+    if mydate == None:
+        #use now
+        mydate = datetime.datetime.now()
+    
     mytime = f"{mydate.hour}:{mydate.minute}"
 
     if IsHoliday(mydate) or IsWeekend(mydate):
         return DealTime(mytime, True)
     
     return DealTime(mytime, False)
+
+
