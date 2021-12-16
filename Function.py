@@ -36,8 +36,12 @@ def DealTime(time, isholiday, timetable):
     else:
         flag = "n"
 
+    if hour not in timetable[flag] or (int(hour) + 1)%24 not in timetable[flag]:
+        return -100
+    
     option1 = timetable[flag][hour]
     minOp1 = ""
+
     for temp in option1:
         if int(minute) <= int(temp):
             minOp1 = temp
@@ -45,10 +49,14 @@ def DealTime(time, isholiday, timetable):
     
     if minOp1 == "":
         hour = str((int(hour) + 1) %24)
-        # print(f"This is the closest --> {hour}:{timetable[flag][hour][0]}")
+        
+        # while(hour not in timetable[flag]):
+        #     hour = str((int(hour) + 1) %24)
+        #     minutesToAdd += 60
+
         return (int(minute)-int(timetable[flag][hour][0]))%60
     else:
-        # print(f"This is the closest --> {hour}:{minOp1}")
+        
         return int(minOp1)-int(minute)
 
 def GetClosest(timetable, holidaylist, mydate=None):
