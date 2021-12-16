@@ -64,8 +64,8 @@ def GetClosest(timetable, holidaylist, mydate=None):
     nextRequest = 60 - mydate.second
 
     if IsHoliday(mydate, holidaylist) or IsWeekend(mydate):
-        return {"next-train": DealTime(mytime, True, timetable), "next-request": nextRequest}
+        return {"next-train": str(DealTime(mytime, True, timetable)), "next-request": str(nextRequest)}
     
-    return {"next-train": DealTime(mytime, False, timetable), "next-request": nextRequest}
+    return {"next-train": str(DealTime(mytime, False, timetable)), "next-request": str(nextRequest)}
 
 

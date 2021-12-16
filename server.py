@@ -19,7 +19,7 @@ f.close()
 
 @app.route('/carcavelos-lisboa')
 def helloHandler():
-    return str(GetClosest(timetable,holidaylist))
+    return GetClosest(timetable,holidaylist)
 
 
 app.run(host='0.0.0.0', port= 8090)
