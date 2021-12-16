@@ -37,10 +37,7 @@ def DealTime(time, isholiday, timetable):
         flag = "n"
 
     if hour not in timetable[flag] or str((int(hour) + 1)%24) not in timetable[flag]:
-        print(hour not in timetable[flag])
-        print(timetable[flag])
-        print(hour, type(hour))
-        print(timetable[flag][hour])
+
         return -100
     
     option1 = timetable[flag][hour]
