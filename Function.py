@@ -55,7 +55,7 @@ def DealTime(time, isholiday, timetable):
         #     hour = str((int(hour) + 1) %24)
         #     minutesToAdd += 60
 
-        return (int(minute)-int(timetable[flag][hour][0]))%60
+        return 60 - int(minute) + int(timetable[flag][hour][0])
     else:
         
         return int(minOp1)-int(minute)
