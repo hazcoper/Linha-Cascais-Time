@@ -1,0 +1,7 @@
+traincatcher:
+  downloads: 1
+  file: traincatcher_2.bin
+  uploaded: '2021-12-21'
+  version: '2'
+  whitelist:
+  - 5ccf7f0079eb
